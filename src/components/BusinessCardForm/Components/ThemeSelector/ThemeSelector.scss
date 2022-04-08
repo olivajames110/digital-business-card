@@ -1,0 +1,31 @@
+.theme-selection-wrapper {
+  position: relative;
+  // padding: 25px 0 15px;
+
+  .MuiTypography-root {
+    font-size: 12px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .theme-selector-items-container {
+    // display: flex;
+    // flex-direction: row;
+    // justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    .theme-selector-item-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 0;
+      margin-right: 0;
+      flex-grow: 1;
+      // margin: 10px 0;
+      margin-bottom: 15px;
+      .MuiFormControlLabel-root {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+}

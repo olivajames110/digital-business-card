@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,qBAAqB,CAAC;EACpB,UAAU,EAAE,YAAY;EACxB,aAAa,EAAE,YAAY;CAI5B;;AAND,AAGE,qBAHmB,CAGnB,aAAa,CAAC;EACZ,WAAW,EAAE,YAAY;CAC1B",
+    "sources": [
+        "TwoColumn.scss"
+    ],
+    "names": [],
+    "file": "TwoColumn.css"
+}

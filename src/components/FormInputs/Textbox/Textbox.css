@@ -1,0 +1,23 @@
+.text-box-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.text-box-wrapper .icon-wrapper {
+  margin-right: 6px;
+}
+
+.text-box-wrapper .MuiTextField-root {
+  border-color: var(--red) !important;
+}
+
+.text-box-wrapper .MuiTextField-root input {
+  border-color: var(--red) !important;
+  border-radius: 20px;
+}
+
+.text-box-wrapper .MuiTextField-root label {
+  color: rgba(0, 0, 0, 0.392);
+}
+/*# sourceMappingURL=Textbox.css.map */

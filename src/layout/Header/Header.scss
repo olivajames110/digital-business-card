@@ -1,0 +1,38 @@
+header {
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.118);
+  height: var(--headerHeight);
+  z-index: 111111;
+  &.active {
+    // padding: 8px 0;
+    svg {
+      height: 48px !important;
+    }
+  }
+  .header-inner-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  .logo-wrapper {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    svg {
+      display: inline-block;
+      height: calc(var(--headerHeight) - 30px);
+      transition: 460ms;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  header {
+    // position: fixed;
+    // background: #393985;
+  }
+}

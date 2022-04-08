@@ -1,0 +1,48 @@
+header {
+  top: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.118);
+  height: var(--headerHeight);
+  z-index: 111111;
+}
+
+header.active svg {
+  height: 48px !important;
+}
+
+header .header-inner-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .logo-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+
+header .logo-wrapper svg {
+  display: inline-block;
+  height: calc(var(--headerHeight) - 30px);
+  -webkit-transition: 460ms;
+  transition: 460ms;
+}
+/*# sourceMappingURL=Header.css.map */

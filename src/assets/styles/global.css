@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+:root {
+  --pageMaxWidth: 940px;
+  --headerHeight: 80px;
+  --inter: "Inter", sans-serif;
+  --manrope: "Manrope", sans-serif;
+  --jost: "Jost", sans-serif;
+  --script: "Meow Script", cursive;
+  --blue: #1976d2;
+  --blueHover: #3084d7;
+  --gray: #616c70;
+  --red: #cc0000;
+  --graySecondary: #b1b8ba;
+  --progressBarAnimation: 460ms;
+  --progressBarAnimationOffset: 500ms;
+}
+
+button,
+body,
+p,
+input,
+textarea {
+  font-size: 15px;
+  line-height: 1.5rem;
+  font-family: var(--inter);
+}
+
+body {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#d16ba5), color-stop(#c777b9), color-stop(#ba83ca), color-stop(#aa8fd8), color-stop(#9a9ae1), color-stop(#8aa7ec), color-stop(#79b3f4), color-stop(#69bff8), color-stop(#52cffe), color-stop(#41dfff), color-stop(#46eefa), to(#5ffbf1));
+  background-image: linear-gradient(to right bottom, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+  background-size: 400% 400%;
+  -webkit-animation: gradient 15s ease infinite;
+          animation: gradient 15s ease infinite;
+}
+
+@-webkit-keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body,
+p {
+  color: #242526;
+}
+
+h1 {
+  font-family: var(--manrope);
+  font-weight: 800;
+}
+
+h2 {
+  font-family: var(--manrope);
+  font-size: 22px;
+}
+
+h3 {
+  font-family: var(--manrope);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  -webkit-transition: 150ms;
+  transition: 150ms;
+  border-radius: 4px;
+}
+
+button .icon-wrapper svg {
+  display: block;
+  height: 16px;
+}
+
+.primary-button {
+  background-color: var(--blue);
+  color: #ffffff;
+}
+
+.primary-button:hover {
+  background-color: var(--blueHover);
+}
+
+.ghost-button {
+  background-color: #ffffff;
+  color: var(--blue);
+  border: 1px solid var(--blue);
+}
+
+.ghost-button:hover {
+  background-color: #f4f7f8;
+}
+
+@media only screen and (max-width: 600px) {
+  :root {
+    --headerHeight: 55px;
+  }
+}
+/*# sourceMappingURL=global.css.map */

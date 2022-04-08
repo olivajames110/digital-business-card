@@ -1,0 +1,27 @@
+.form-group-wrapper {
+  margin-bottom: 40px;
+  .form-group__header {
+    // padding-bottom: 10px;
+    // margin-bottom: 5px;
+    // border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+    h2 {
+      position: relative;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 32px;
+      &.optional::after {
+        content: "Optional";
+        font-size: 13px;
+        font-style: italic;
+        color: rgb(141, 139, 139);
+        font-weight: normal;
+        margin-left: 8px;
+      }
+    }
+  }
+  .form-group__description {
+    font-size: 13px;
+    line-height: 24px;
+    margin-bottom: 20px;
+  }
+}

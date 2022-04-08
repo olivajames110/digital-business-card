@@ -1,0 +1,26 @@
+.form-group-wrapper {
+  margin-bottom: 40px;
+}
+
+.form-group-wrapper .form-group__header h2 {
+  position: relative;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.form-group-wrapper .form-group__header h2.optional::after {
+  content: "Optional";
+  font-size: 13px;
+  font-style: italic;
+  color: #8d8b8b;
+  font-weight: normal;
+  margin-left: 8px;
+}
+
+.form-group-wrapper .form-group__description {
+  font-size: 13px;
+  line-height: 24px;
+  margin-bottom: 20px;
+}
+/*# sourceMappingURL=FormGroup.css.map */
