@@ -8,6 +8,7 @@ $darkCardShadow: -4px 5px 7px 3px #0000004d;
   // min-width: 400px;
   perspective: 1000px;
   height: 100%;
+
   text-align: left;
   .business-card-item {
     position: absolute;
@@ -19,11 +20,13 @@ $darkCardShadow: -4px 5px 7px 3px #0000004d;
     z-index: 1;
     font-family: var(--manrope);
     display: block;
+    border: none;
     transition: 240ms;
     transform-style: preserve-3d;
 
     .glass-wrapper,
     .background-color {
+      border: none !important;
       border-radius: inherit;
       position: absolute;
       top: 0;
@@ -42,6 +45,17 @@ $darkCardShadow: -4px 5px 7px 3px #0000004d;
     }
     .background-color {
       box-shadow: $darkCardShadow;
+      background: #ffefba; /* fallback for old browsers */
+      background: -webkit-linear-gradient(
+        to right,
+        #ffffff,
+        #ffefba
+      ); /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(
+        to right,
+        #ffffff,
+        #ffefba
+      ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
     &.flipped {
       transform: rotateY(180deg);
@@ -108,6 +122,7 @@ $darkCardShadow: -4px 5px 7px 3px #0000004d;
       letter-spacing: 1px;
       display: flex;
       align-items: center;
+      color: inherit;
       animation: enterEase 200ms;
 
       &#name {
@@ -229,7 +244,7 @@ $darkCardShadow: -4px 5px 7px 3px #0000004d;
 }
 
 //Flip Card Button
-button.card-flip {
+.card-flip {
   position: absolute;
   bottom: -20px;
   z-index: 1111111;
@@ -244,6 +259,7 @@ button.card-flip {
   letter-spacing: 2px;
   text-transform: uppercase;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.159);
+  cursor: pointer;
   .icon-wrapper {
     margin-right: 10px;
     height: 18px !important;
@@ -289,7 +305,6 @@ button.card-flip {
     color: #fff;
     fill: #fff;
     .background-color {
-      // border: solid 2px transparent;
       border: none;
       opacity: 0.8;
       text-shadow: 1px 1px 3px #00000047;
@@ -297,8 +312,6 @@ button.card-flip {
       background: -webkit-linear-gradient(top left, #1a0d6dd8, #300437dc);
       background: -moz-linear-gradient(top left, #1a0d6d, #300437);
       background: linear-gradient(to bottom right, #1a0d6d, #300437);
-
-      // box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.03);
     }
   }
   &.dark-alt {
@@ -335,12 +348,16 @@ button.card-flip {
     }
   }
   &.clean {
-    color: rgb(41, 41, 41);
-    fill: rgb(41, 41, 41);
+    color: #fff;
+    fill: #fff;
     .background-color {
       border: solid 2px transparent;
       // text-shadow: 1px 1px 3px #00000047;
       background: #ffffff;
+      background: #89f7fe;
+      background: -webkit-linear-gradient(top left, #89f7fe, #66a6ff);
+      background: -moz-linear-gradient(top left, #89f7fe, #66a6ff);
+      background: linear-gradient(to bottom right, #89f7fe, #66a6ff);
       border-radius: 2px;
       box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.03);
       border-top-left-radius: 40px;
