@@ -15,7 +15,7 @@ const BusinessCard = (props) => {
   // const [theme, setTheme] = useState("dark");
 
   //Redux
-  const cardPreviewState = useSelector((state) => state.cardPreviewState);
+  const formState = useSelector((state) => state.formState);
 
   const businessCardRef = useRef(null);
   const businessCardFrontImageRef = useRef(null);
@@ -30,55 +30,45 @@ const BusinessCard = (props) => {
   const socialMediaIcons = (
     <div className="social-media-icons-container">
       <a
-        href={cardPreviewState.socials.facebook}
+        href={formState.socials.facebook}
         target="_blank"
-        className={`icon-wrapper ${
-          cardPreviewState.socials.facebook && "active"
-        }`}
+        className={`icon-wrapper ${formState.socials.facebook && "active"}`}
         rel="noreferrer"
       >
         {facebook}
       </a>
 
       <a
-        href={cardPreviewState.socials.instagram}
+        href={formState.socials.instagram}
         target="_blank"
-        className={`icon-wrapper ${
-          cardPreviewState.socials.instagram && "active"
-        }`}
+        className={`icon-wrapper ${formState.socials.instagram && "active"}`}
         rel="noreferrer"
       >
         {instagram}
       </a>
 
       <a
-        href={cardPreviewState.socials.twitter}
+        href={formState.socials.twitter}
         target="_blank"
-        className={`icon-wrapper ${
-          cardPreviewState.socials.twitter && "active"
-        }`}
+        className={`icon-wrapper ${formState.socials.twitter && "active"}`}
         rel="noreferrer"
       >
         {linkedIn}
       </a>
 
       <a
-        href={cardPreviewState.socials.linkedIn}
+        href={formState.socials.linkedIn}
         target="_blank"
-        className={`icon-wrapper ${
-          cardPreviewState.socials.linkedIn && "active"
-        }`}
+        className={`icon-wrapper ${formState.socials.linkedIn && "active"}`}
         rel="noreferrer"
       >
         {twitter}
       </a>
 
       <a
-        href={cardPreviewState.socials.website}
+        href={formState.socials.website}
         target="_blank"
-        className={`icon-wrapper ${
-          cardPreviewState.socials.website && "active"
-        }`}
+        className={`icon-wrapper ${formState.socials.website && "active"}`}
         rel="noreferrer"
       >
         {monitor}
@@ -87,33 +77,29 @@ const BusinessCard = (props) => {
   );
 
   const cardFront = (
-    <div className="card-item-face card-item-face__front">
-      <div
-        className={`card__header ${cardPreviewState.imagePersonal && "active"}`}
-      >
+    <div
+      style={{ color: formState.themeStyles.color }}
+      className="card-item-face card-item-face__front"
+    >
+      <div className={`card__header ${formState.imagePersonal && "active"}`}>
         <div className="card__header--details">
-          <div
-            className={cardPreviewState.name ? `detail-item` : "empty"}
-            id="name"
-          >
-            {cardPreviewState.name}
+          <div className={formState.name ? `detail-item` : "empty"} id="name">
+            {formState.name}
           </div>
           <div
             className={
-              cardPreviewState.job || cardPreviewState.company
-                ? `detail-item`
-                : "empty"
+              formState.job || formState.company ? `detail-item` : "empty"
             }
             id="title"
           >
-            {cardPreviewState.job}
-            {cardPreviewState.company && ", "}
-            {cardPreviewState.company}
+            {formState.job}
+            {formState.company && ", "}
+            {formState.company}
           </div>
         </div>
 
         <div
-          style={{ display: cardPreviewState.imagePersonal ? "flex" : "none" }}
+          style={{ display: formState.imagePersonal ? "flex" : "none" }}
           className="personal-card-image-wrapper"
         >
           <div
@@ -122,37 +108,37 @@ const BusinessCard = (props) => {
             className="card-image"
             ref={businessCardFrontImageRef}
           >
-            <img src={cardPreviewState.imagePersonal} alt="" srcset="" />
+            <img src={formState.imagePersonal} alt="" srcset="" />
           </div>
         </div>
       </div>
       <div className="card__details">
         <a
-          href={`tel: ${cardPreviewState.phone}`}
+          href={`tel: ${formState.phone}`}
           targer={"_blank"}
-          className={cardPreviewState.phone ? `detail-item` : "empty"}
+          className={formState.phone ? `detail-item` : "empty"}
           id="phone-number"
         >
           <div className="detail-item__icon">{phoneIcon}</div>
-          <div className="detail-item__detail">{cardPreviewState.phone}</div>
+          <div className="detail-item__detail">{formState.phone}</div>
         </a>
         <a
-          href={`mailto: ${cardPreviewState.email}`}
+          href={`mailto: ${formState.email}`}
           target="_blank"
-          className={cardPreviewState.email ? `detail-item` : "empty"}
+          className={formState.email ? `detail-item` : "empty"}
           id="email"
           rel="noreferrer"
         >
           <div className="detail-item__icon">{emailIcon}</div>
-          <div className="detail-item__detail">{cardPreviewState.email}</div>
+          <div className="detail-item__detail">{formState.email}</div>
         </a>
 
-        {cardPreviewState.address.street && (
+        {formState.address.street && (
           <div className={`detail-item`} id="address">
             <div className="detail-item__icon">{addressIcon}</div>
             <div className="detail-item__detail">
-              <div className="street">{cardPreviewState.address.street}</div>
-              <div className="city-zip">{cardPreviewState.address.city}</div>
+              <div className="street">{formState.address.street}</div>
+              <div className="city-zip">{formState.address.city}</div>
             </div>
           </div>
         )}
@@ -162,20 +148,23 @@ const BusinessCard = (props) => {
   );
 
   const cardBack = (
-    <div className=" card-item-face card-item-face__back">
-      {cardPreviewState.imageWork && (
+    <div
+      style={{ color: formState.themeStyles.color }}
+      className=" card-item-face card-item-face__back"
+    >
+      {formState.imageWork && (
         <div id="work" className="card-image">
-          <img src={cardPreviewState.imageWork} alt="" srcset="" />
+          <img src={formState.imageWork} alt="" srcset="" />
         </div>
       )}
-      {cardPreviewState.webAddressWork && (
+      {formState.webAddressWork && (
         <a
-          href={`https://${cardPreviewState.webAddressWork}`}
+          href={`https://${formState.webAddressWork}`}
           target={"_blank"}
           className="web-address--work"
           rel="noreferrer"
         >
-          {cardPreviewState.webAddressWork}
+          {formState.webAddressWork}
         </a>
       )}
     </div>
@@ -186,13 +175,11 @@ const BusinessCard = (props) => {
   };
   useEffect(() => {
     window.addEventListener("resize", setHeightHandler);
-
-    console.log("WIDTH", businessCardFrontImageRef.current.offsetWidth);
     setImageWidth(businessCardFrontImageRef.current.offsetWidth);
 
     setHeightHandler();
     return () => window.removeEventListener("resize", setHeightHandler);
-  }, [cardPreviewState]);
+  }, [formState]);
   return (
     <>
       <div
@@ -202,19 +189,19 @@ const BusinessCard = (props) => {
         <div
           ref={businessCardRef}
           style={{ height: cardHeight }}
-          className={`business-card-item ${cardPreviewState.theme.themeName} ${
+          className={`business-card-item ${formState.themeName} ${
             !isFront && "flipped"
           }`}
         >
           <div className="glass-wrapper"></div>
-          <div className="background-color"></div>
+          <div style={formState.themeStyles} className="background-color"></div>
           {cardFront}
           {cardBack}
         </div>
-        <button onClick={flipCard} className="card-flip">
+        <div role={"button"} onClick={flipCard} className="card-flip">
           <div className="icon-wrapper">{switchIcon}</div>
           <span>FLIP CARD</span>
-        </button>
+        </div>
       </div>
     </>
   );

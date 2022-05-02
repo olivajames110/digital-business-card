@@ -1,0 +1,25 @@
+.color-picker-form-field {
+  position: relative;
+  width: 100%;
+  .color-type-options-container {
+    display: flex;
+  }
+  .inputs-container {
+    &.grid {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr;
+    }
+    .form-input-wrapper.span {
+      display: flex;
+      // align-items: center;
+      justify-content: center;
+      // margin: 0 6px;
+      padding-top: 15px;
+    }
+
+    .color-picker-input__dropdown {
+      width: 38%;
+      margin-left: 15px;
+    }
+  }
+}

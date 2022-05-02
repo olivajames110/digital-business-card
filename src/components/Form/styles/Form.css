@@ -1,0 +1,69 @@
+section#card-form-section {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  display: flex;
+  width: 100%;
+  /* flex-basis: 400px; */
+}
+
+section#card-form-section.desktop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50%;
+}
+
+section#card-form-section .card-form-section-inner-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-preferred-size: 520px;
+      flex-basis: 520px;
+  height: 100%;
+}
+
+section#card-form-section .card-form-section-inner-wrapper #form-card {
+  position: relative;
+  background-color: white;
+  min-height: 84%;
+  max-height: 95%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+section#card-form-section .card-form-section-inner-wrapper #form-card .form-card-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  overflow-y: auto;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+/*# sourceMappingURL=Form.css.map */

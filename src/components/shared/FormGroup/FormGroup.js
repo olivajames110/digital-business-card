@@ -1,14 +1,16 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import "./FormGroup.css";
+
 const FormGroup = (props) => {
+  const formStepIsValid = useSelector((state) => state.formStep.stepIsValid);
+  const formState = useSelector((state) => state.formState);
+
   return (
-    <div className="form-group-wrapper">
-      <div className="form-group__header">
-        <h2 className={props.optional && "optional"}>{props.title}</h2>
+    <div style={props.style} className={`form-group-outer-wrapper`}>
+      <div className="form-group__title">
+        {props.title} {props.isRequired && "*"}
       </div>
-      {props.description && (
-        <div className="form-group__description">{props.description}</div>
-      )}
       {props.children}
     </div>
   );

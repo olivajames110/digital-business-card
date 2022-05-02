@@ -1,0 +1,24 @@
+.form__header {
+  position: relative;
+  -webkit-box-shadow: 0 0 3px 0px rgba(0, 0, 0, 0.052);
+          box-shadow: 0 0 3px 0px rgba(0, 0, 0, 0.052);
+}
+
+.form__header .logo-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  padding: 25px 0 15px;
+}
+
+.form__header .logo-wrapper svg {
+  display: inline-block;
+  height: calc(var(--headerHeight) - 30px);
+  -webkit-transition: 460ms;
+  transition: 460ms;
+}
+/*# sourceMappingURL=FormHeader.css.map */

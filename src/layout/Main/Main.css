@@ -5,26 +5,11 @@ main {
 }
 
 main .main-inner-wrapper {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  padding: calc(var(--headerHeight) + 30px) 15px 30px;
   height: 100%;
-  width: 100%;
-  margin: 0 auto;
-  max-width: 1180px;
-  z-index: 1111;
 }
 
 main section {
+  padding: 20px 15px;
   -ms-flex-preferred-size: 50%;
       flex-basis: 50%;
 }
@@ -46,16 +31,21 @@ main section {
 }
 
 section#card-preview-section {
+  position: fixed;
+  top: 0;
+  width: 50%;
+  left: 0;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: relative;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  padding: 35px;
 }
 
 section#card-preview-section.preview-active {

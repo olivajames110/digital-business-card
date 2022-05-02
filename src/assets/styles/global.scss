@@ -19,28 +19,62 @@ body,
   --manrope: "Manrope", sans-serif;
   --jost: "Jost", sans-serif;
   --script: "Meow Script", cursive;
+  // --primary: #fa85fc;
+  // --primary: #e942ec;
+  --primary: #b92ede;
+  // --primary: #9700ea;
   --blue: #1976d2;
   --blueHover: #3084d7;
   // --blue: #2da9e0;
   // --blueHover: #0c73a1;
   --gray: #616c70;
   --red: #cc0000;
+  // --graySecondary: #fff;
+  // --graySecondary: #929293;
   --graySecondary: #b1b8ba;
-  --progressBarAnimation: 460ms;
-  --progressBarAnimationOffset: 500ms;
+  --progressBarHeight: 100px;
+  --progressBarAnimation: 160ms;
+  --progressBarAnimationOffset: calc(var(--progressBarAnimation) + 40ms);
+  // --progressBarAnimationOffset: 2s;
 }
 
 button,
 body,
 p,
 input,
+div,
+span,
 textarea {
-  font-size: 15px;
-  line-height: 1.5rem;
+  font-size: 0.8rem;
   font-family: var(--inter);
 }
 
-body {
+input,
+fieldset {
+  font-size: 0.8rem !important;
+}
+
+body,
+p,
+input,
+textarea {
+  line-height: 1.4rem;
+}
+
+// input[type="date"],
+// input[type="email"],
+// input[type="number"],
+// input[type="password"],
+// input[type="search"],
+// input[type="tel"],
+// input[type="text"],
+// input[type="url"],
+// select,
+// textarea {
+//   border: inherit;
+// }
+
+main {
   background-image: linear-gradient(
     to right bottom,
     #d16ba5,
@@ -56,17 +90,6 @@ body {
     #46eefa,
     #5ffbf1
   );
-  // background-image: linear-gradient(
-  //   45deg,
-  //   #141041 0%,
-  //   #1f1b55 15%,
-  //   #2b296b 30%,
-  //   #36357e 45%,
-  //   #3d3f8f 60%,
-  //   #43469d 75%,
-  //   #494ca7 90%,
-  //   #4e53b1 100%
-  // );
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }

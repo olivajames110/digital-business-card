@@ -1,0 +1,64 @@
+#success-screen {
+  position: relative;
+  padding: 30px 0;
+  text-align: center;
+}
+
+#success-screen h2 {
+  line-height: 1.6rem;
+  margin-bottom: 10px;
+}
+
+#success-screen p {
+  font-size: 13px;
+}
+
+#success-screen .graphic-wrapper {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  margin-top: -40px;
+}
+
+#success-screen .url-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 10px;
+  font-size: 14px;
+  border-radius: 2px;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+#success-screen .url-box .inner-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  padding: 14px 20px;
+  font-weight: 600;
+  background-color: #f9ecfc;
+}
+
+#success-screen .url-box .inner-wrapper .seperator {
+  margin: 0 4px;
+}
+
+#success-screen .url-box .icon-wrapper {
+  margin-left: 10px;
+}
+
+#success-screen .url-box .icon-wrapper svg {
+  display: block;
+  width: 15px;
+  height: 15px;
+  fill: #333;
+}
+/*# sourceMappingURL=Success.css.map */

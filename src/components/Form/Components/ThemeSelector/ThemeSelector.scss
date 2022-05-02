@@ -1,0 +1,53 @@
+$circleSize: 36px;
+.theme-selection-wrapper {
+  position: relative;
+  // padding: 25px 0 15px;
+
+  .MuiTypography-root {
+    font-size: 12px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .theme-selector-items-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    .theme-selector-item-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 0;
+      margin-right: 20px;
+      // flex-grow: 1;
+      margin-top: 10px;
+      flex-direction: column;
+      cursor: pointer;
+      &.active {
+        .theme-selector-item__circle {
+          // border: 3px solid var(--primary);
+          box-shadow: 0 0 2px 2px #65656540 !important;
+        }
+        .theme-selector-item__label {
+          color: var(--primary);
+          font-weight: bold;
+        }
+      }
+      .theme-selector-item__circle {
+        display: flex;
+        width: $circleSize;
+        height: $circleSize;
+        box-shadow: inset 0 0 2px 1px #403d3d2b;
+        // background-color: red;
+        border-radius: 50px;
+      }
+      .theme-selector-item__label {
+        font-size: 12px;
+      }
+      .MuiFormControlLabel-root {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+}

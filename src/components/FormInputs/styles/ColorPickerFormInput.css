@@ -1,0 +1,33 @@
+.color-picker-form-field {
+  position: relative;
+  width: 100%;
+}
+
+.color-picker-form-field .color-type-options-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.color-picker-form-field .inputs-container.grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 40px 1fr;
+      grid-template-columns: 1fr 40px 1fr;
+}
+
+.color-picker-form-field .inputs-container .form-input-wrapper.span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 15px;
+}
+
+.color-picker-form-field .inputs-container .color-picker-input__dropdown {
+  width: 38%;
+  margin-left: 15px;
+}
+/*# sourceMappingURL=ColorPickerFormInput.css.map */

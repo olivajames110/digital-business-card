@@ -1,34 +1,79 @@
 import React, { useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";
 import { useDispatch, useSelector } from "react-redux";
+import { SpinnerDotted } from "spinners-react";
 
 import BusinessCard from "../../components/BusinessCard/BusinessCard";
-import BusinessCardForm from "../../components/BusinessCardForm/BusinessCardForm";
+import Form from "../../components/Form/Form";
 import Modal from "../../components/shared/Modal/Modal";
+import { useFirebase } from "../../firebase";
 import { setMobilePreview } from "../../redux/actions/mobilePreviewActions";
 
 import "./Main.css";
 const Main = (props) => {
   const [showCard, setShowCard] = useState(false);
-  const dispatch = useDispatch();
+  const [showForm, setShowForm] = useState(false);
 
+  const dispatch = useDispatch();
+  const formState = useSelector((state) => state.formState);
+  const { isLoading, createNewUser, getUser } = useFirebase();
   const mobilePreviewActive = useSelector((state) => state.mobilePreviewActive);
   const cardPreviewSection = (
     <section
-      className={isMobile && showCard && "preview-active"}
+      className={`${isMobile && showCard && "preview-active"} ${
+        !isMobile && "desktop"
+      }`}
+      style={{ width: showForm ? "50%" : "100%" }}
       id="card-preview-section"
     >
-      <BusinessCard />
+      {isLoading ? (
+        <SpinnerDotted
+          size={150}
+          thickness={100}
+          speed={100}
+          color="var(--primary)"
+        />
+      ) : (
+        <BusinessCard />
+      )}
     </section>
   );
+
+  const getLastLetter = (url) => {
+    let lastLetter = url.charAt(url.length - 1);
+    let lastWord = url.split("/");
+    if (lastLetter === "/") {
+      return lastWord[lastWord.length - 2];
+    } else {
+      return lastWord[lastWord.length - 1];
+    }
+  };
 
   useEffect(() => {
     if (isMobile) {
       setShowCard(false);
     }
+
+    let slug =
+      window.location.host === "oakcreatives.com"
+        ? "/digital-business-card/"
+        : "/";
+    if (window.location.pathname === slug) {
+      console.log("Show Form", window.location.pathname, slug);
+      setShowForm(true);
+    } else {
+      setShowForm(false);
+      setMobilePreview(true);
+      let user = getLastLetter(window.location.href);
+      console.log("Find if exists", window.location.pathname, user);
+      getUser(user);
+    }
   }, []);
   return (
-    <main className={`gradient`}>
+    <main
+      style={{ background: formState.pageBackgroundColor }}
+      className={`gradient`}
+    >
       <Modal
         className={"card-preview-modal"}
         show={mobilePreviewActive}
@@ -37,8 +82,9 @@ const Main = (props) => {
         <BusinessCard />
       </Modal>
       <div className="main-inner-wrapper">
-        {!isMobile && cardPreviewSection}
-        <BusinessCardForm />
+        {/* {!showForm && cardPreviewSection} */}
+        {((showForm && !isMobile) || !showForm) && cardPreviewSection}
+        {showForm && <Form />}
       </div>
       {/* {!isMobile && <div className="main-logo-wrapper">{logo}</div>} */}
     </main>

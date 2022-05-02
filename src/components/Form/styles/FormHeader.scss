@@ -1,0 +1,29 @@
+.form__header {
+  position: relative;
+  box-shadow: 0 0 3px 0px rgba(0, 0, 0, 0.052);
+  .logo-wrapper {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    padding: 25px 0 15px;
+    svg {
+      display: inline-block;
+      height: calc(var(--headerHeight) - 30px);
+      transition: 460ms;
+    }
+  }
+}
+// .form__header {
+//   h1 {
+//     font-size: 22px;
+//     line-height: 1.3em;
+//     font-weight: 600;
+//     text-transform: uppercase;
+//     letter-spacing: 2px;
+//     color: #fff;
+//     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.248);
+//     font-family: var(--inter);
+//     padding-left: 15px;
+//   }
+//   padding-bottom: 10px;
+// }

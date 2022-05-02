@@ -1,0 +1,110 @@
+.form__footer {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px 15px;
+  border-top: 2px solid #f2f2f2;
+}
+
+.form__footer .next-button-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.form__footer button {
+  position: relative;
+  background: linear-gradient(310deg, #ff4094 0%, #a629f2 100%);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 50px;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+}
+
+.form__footer button .icon-wrapper {
+  margin-left: 8px;
+}
+
+.form__footer button .icon-wrapper svg {
+  display: block;
+  height: 12px;
+  fill: #fff;
+}
+
+.form__footer button.preview-button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 6px 18px;
+  margin-right: 10px;
+  background-color: #fff;
+  border: 1px solid #821897;
+  color: #821897 !important;
+  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 111;
+  background: transparent !important;
+}
+
+.form__footer button.preview-button-container .preview-icon-wrapper {
+  margin-right: 6px;
+}
+
+.form__footer button.preview-button-container .preview-icon-wrapper svg {
+  display: block;
+  height: 18px;
+  stroke: #821897;
+}
+
+.form__footer button.preview-button-container span {
+  color: #821897;
+}
+
+.form__footer button.gradient::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(80deg, #ff4094 0%, #a629f2 100%);
+  z-index: -1;
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+  opacity: 0;
+}
+
+.form__footer button.gradient:hover::before {
+  opacity: 1;
+}
+
+.form__footer button.ghost {
+  background: #fff !important;
+  color: #a629f2;
+  padding: 6px 4px;
+}
+
+.form__footer button.ghost:hover {
+  color: #6b0ea5;
+}
+/*# sourceMappingURL=FormFooter.css.map */

@@ -1,26 +1,35 @@
-.form-group-wrapper {
-  margin-bottom: 40px;
-}
-
-.form-group-wrapper .form-group__header h2 {
+.form-group-outer-wrapper {
   position: relative;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 32px;
+  padding: 20px 5px;
+  z-index: 11;
 }
 
-.form-group-wrapper .form-group__header h2.optional::after {
-  content: "Optional";
-  font-size: 13px;
-  font-style: italic;
-  color: #8d8b8b;
-  font-weight: normal;
-  margin-left: 8px;
+.form-group-outer-wrapper:not(:last-child) {
+  border-bottom: 1px dotted #e6e5e5;
 }
 
-.form-group-wrapper .form-group__description {
-  font-size: 13px;
-  line-height: 24px;
-  margin-bottom: 20px;
+.form-group-outer-wrapper.error:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 105%;
+  height: 100%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: #ff00000a;
+  z-index: 1;
+}
+
+.form-group-outer-wrapper.error .form-group__title {
+  color: #d32f2f;
+}
+
+.form-group-outer-wrapper .form-group__title {
+  font-weight: 600 !important;
+  color: #1f1e1e;
+  font-family: var(--manrope);
+  font-size: 14px;
+  line-height: 28px;
 }
 /*# sourceMappingURL=FormGroup.css.map */

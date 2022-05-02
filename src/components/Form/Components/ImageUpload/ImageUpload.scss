@@ -1,0 +1,45 @@
+$boxHeight: 100px;
+
+.image-upload-inner-wrapper {
+  height: $boxHeight;
+  display: flex;
+  width: 100%;
+  .image-upload-box {
+    display: flex;
+    flex-grow: 1;
+    border-radius: 5px;
+    background-color: #eff7fe;
+    border: 2px dashed #a2cbf8;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: 200ms;
+    color: rgb(27, 112, 202);
+    &:hover {
+      background-color: #e3eef8;
+    }
+    .image-upload__title {
+      margin-top: 5px;
+      font-size: 12px;
+    }
+    svg {
+      height: 20px;
+    }
+    #image-upload {
+      display: none;
+    }
+  }
+
+  .image-upload-preview {
+    border: 1px solid #d6d6d6;
+    width: $boxHeight;
+    height: $boxHeight;
+    border-radius: 5px;
+    margin-left: 10px;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

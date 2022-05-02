@@ -8,7 +8,7 @@ import Main from "./layout/Main/Main";
 const App = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Main />
     </>
   );

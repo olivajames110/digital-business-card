@@ -1,0 +1,75 @@
+.theme-selection-wrapper {
+  position: relative;
+}
+
+.theme-selection-wrapper .MuiTypography-root {
+  font-size: 12px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.theme-selection-wrapper .theme-selector-items-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.theme-selection-wrapper .theme-selector-items-container .theme-selector-item-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-left: 0;
+  margin-right: 20px;
+  margin-top: 10px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  cursor: pointer;
+}
+
+.theme-selection-wrapper .theme-selector-items-container .theme-selector-item-wrapper.active .theme-selector-item__circle {
+  -webkit-box-shadow: 0 0 2px 2px #65656540 !important;
+          box-shadow: 0 0 2px 2px #65656540 !important;
+}
+
+.theme-selection-wrapper .theme-selector-items-container .theme-selector-item-wrapper.active .theme-selector-item__label {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.theme-selection-wrapper .theme-selector-items-container .theme-selector-item-wrapper .theme-selector-item__circle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 36px;
+  height: 36px;
+  -webkit-box-shadow: inset 0 0 2px 1px #403d3d2b;
+          box-shadow: inset 0 0 2px 1px #403d3d2b;
+  border-radius: 50px;
+}
+
+.theme-selection-wrapper .theme-selector-items-container .theme-selector-item-wrapper .theme-selector-item__label {
+  font-size: 12px;
+}
+
+.theme-selection-wrapper .theme-selector-items-container .theme-selector-item-wrapper .MuiFormControlLabel-root {
+  margin-left: 0;
+  margin-right: 0;
+}
+/*# sourceMappingURL=ThemeSelector.css.map */
