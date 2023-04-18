@@ -2,39 +2,90 @@
   position: relative;
   // margin: 10px 0;
   transition: 110ms;
-  overflow: hidden;
+  // overflow: hidden;
   width: 100%;
-  .color-picker__input {
+
+  .preview {
+    overflow: hidden;
     position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #dedede;
+    border-radius: 6px;
+    transition: 110ms border;
+    background: repeating-conic-gradient(
+        rgb(219, 219, 219) 0%,
+        rgb(219, 219, 219) 25%,
+        transparent 0%,
+        transparent 50%
+      )
+      50% center / 15px 16px;
+    &.expanded {
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      svg {
+        transform: rotate(180deg);
+      }
+    }
     .hex-color-preview {
+      overflow: hidden;
       position: relative;
       display: flex;
       flex-grow: 1;
       cursor: pointer;
+
+      width: 100%;
+      height: 30px;
+    }
+    .expand-toggle {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: absolute;
-      right: 10px;
-      border-radius: 2px;
-      top: 50%;
-      // top: calc(50% + 6px);
-      transform: translateY(-50%);
-      width: 24px;
-      height: 24px;
-      border: 1px solid #dedede;
-      background: repeating-conic-gradient(
-          rgb(219, 219, 219) 0%,
-          rgb(219, 219, 219) 25%,
-          transparent 0%,
-          transparent 50%
-        )
-        50% center / 15px 15px;
-      .preview {
+      right: 0;
+      background: #fff;
+      height: 100%;
+      padding: 0 6px;
+      border-left: 1px solid #dedede;
+      cursor: pointer;
+      svg {
+        display: block;
+        transition: 110ms;
+        width: 24px;
+        height: 24px;
+        fill: var(--primary);
       }
     }
   }
+  .expanded-content {
+    position: relative;
+    // background-color: #efefef;
+    // box-shadow: 1px 0 3px 1px rgba(0, 0, 0, 0.109);
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border: 1px solid #eaeaea;
+    border-top: none;
+    padding: 10px 18px 20px;
+    box-shadow: 0px 2px 4px 1px #0000001f;
+  }
+  .color-picker__input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    span {
+      margin-right: 3px;
+      margin-top: -10px;
+    }
+  }
   .color-picker__picker {
-    overflow: hidden;
-    padding: 0 10px;
+    // overflow: hidden;
+    position: relative;
+    z-index: 111111111111;
+    // padding: 0 10px;
     .react-colorful {
+      z-index: 111111111111;
       width: 100%;
       height: 120px;
       .react-colorful__saturation {

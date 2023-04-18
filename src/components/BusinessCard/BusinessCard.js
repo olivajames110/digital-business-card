@@ -6,17 +6,22 @@ import {
   Monitor,
   Twitter,
 } from "@mui/icons-material";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./BusinessCard.css";
+import { toggleCardDirection } from "../../redux/actions/cardDirectionActions";
+import VCF from "./Components/CardDetailItem/vcf";
 const BusinessCard = (props) => {
   const [cardHeight, setCardHeight] = useState(null);
-  const [isFront, setIsFront] = useState(true);
+  // const [isFront, setIsFront] = useState(true);
   const [imageWidth, setImageWidth] = useState(null);
   // const [theme, setTheme] = useState("dark");
 
   //Redux
   const formState = useSelector((state) => state.formState);
-
+  const isFront = useSelector((state) => state.cardDirectionIsForward);
+  const showForm = useSelector((state) => state.showForm);
+  const isMobile = useSelector((state) => state.isMobile);
+  const dispatch = useDispatch();
   const businessCardRef = useRef(null);
   const businessCardFrontImageRef = useRef(null);
   const heightRatio = 1.35;
@@ -28,47 +33,50 @@ const BusinessCard = (props) => {
   };
 
   const socialMediaIcons = (
-    <div className="social-media-icons-container">
+    <div
+      style={{ fill: formState.socialMediaIconColor }}
+      className="social-media-icons-container"
+    >
       <a
         href={formState.socials.facebook}
         target="_blank"
-        className={`icon-wrapper ${formState.socials.facebook && "active"}`}
+        className={`icon-wrapper ${formState.facebook && "active"}`}
         rel="noreferrer"
       >
         {facebook}
       </a>
 
       <a
-        href={formState.socials.instagram}
+        href={formState.instagram}
         target="_blank"
-        className={`icon-wrapper ${formState.socials.instagram && "active"}`}
+        className={`icon-wrapper ${formState.instagram && "active"}`}
         rel="noreferrer"
       >
         {instagram}
       </a>
 
       <a
-        href={formState.socials.twitter}
+        href={formState.twitter}
         target="_blank"
-        className={`icon-wrapper ${formState.socials.twitter && "active"}`}
-        rel="noreferrer"
-      >
-        {linkedIn}
-      </a>
-
-      <a
-        href={formState.socials.linkedIn}
-        target="_blank"
-        className={`icon-wrapper ${formState.socials.linkedIn && "active"}`}
+        className={`icon-wrapper ${formState.twitter && "active"}`}
         rel="noreferrer"
       >
         {twitter}
       </a>
 
       <a
-        href={formState.socials.website}
+        href={formState.linkedIn}
         target="_blank"
-        className={`icon-wrapper ${formState.socials.website && "active"}`}
+        className={`icon-wrapper ${formState.linkedIn && "active"}`}
+        rel="noreferrer"
+      >
+        {linkedIn}
+      </a>
+
+      <a
+        href={formState.website}
+        target="_blank"
+        className={`icon-wrapper ${formState.website && "active"}`}
         rel="noreferrer"
       >
         {monitor}
@@ -78,7 +86,8 @@ const BusinessCard = (props) => {
 
   const cardFront = (
     <div
-      style={{ color: formState.themeStyles.color }}
+      style={formState.themeStyles}
+      // style={{ color: formState.themeStyles.color }}
       className="card-item-face card-item-face__front"
     >
       <div className={`card__header ${formState.imagePersonal && "active"}`}>
@@ -120,7 +129,9 @@ const BusinessCard = (props) => {
           id="phone-number"
         >
           <div className="detail-item__icon">{phoneIcon}</div>
-          <div className="detail-item__detail">{formState.phone}</div>
+          <div className="detail-item__detail">
+            <span>{formState.phone}</span>
+          </div>
         </a>
         <a
           href={`mailto: ${formState.email}`}
@@ -130,15 +141,16 @@ const BusinessCard = (props) => {
           rel="noreferrer"
         >
           <div className="detail-item__icon">{emailIcon}</div>
-          <div className="detail-item__detail">{formState.email}</div>
+          <div className="detail-item__detail">
+            <span>{formState.email}</span>
+          </div>
         </a>
 
-        {formState.address.street && (
+        {formState.companyAddress && (
           <div className={`detail-item`} id="address">
             <div className="detail-item__icon">{addressIcon}</div>
             <div className="detail-item__detail">
-              <div className="street">{formState.address.street}</div>
-              <div className="city-zip">{formState.address.city}</div>
+              <span> {formState.companyAddress}</span>
             </div>
           </div>
         )}
@@ -149,41 +161,52 @@ const BusinessCard = (props) => {
 
   const cardBack = (
     <div
-      style={{ color: formState.themeStyles.color }}
+      // style={{ color: formState.themeStyles.color }}
+      style={formState.themeStyles}
       className=" card-item-face card-item-face__back"
     >
       {formState.imageWork && (
-        <div id="work" className="card-image">
+        <div
+          id="work"
+          className={`card-image ${
+            formState.imageWorkColor === "white" && "white"
+          }  ${formState.imageWorkColor === "black" && "black"}`}
+        >
           <img src={formState.imageWork} alt="" srcset="" />
         </div>
       )}
       {formState.webAddressWork && (
-        <a
-          href={`https://${formState.webAddressWork}`}
-          target={"_blank"}
-          className="web-address--work"
-          rel="noreferrer"
-        >
-          {formState.webAddressWork}
-        </a>
+        <div className="work-web-address-container">
+          <a
+            href={`https://${formState.webAddressWork}`}
+            target={"_blank"}
+            className="web-address--work"
+            rel="noreferrer"
+          >
+            {formState.webAddressWork}
+          </a>
+          <div style={{ fill: formState.themeStyles.color }} className="icon">
+            {launchIcon}
+          </div>
+        </div>
       )}
     </div>
   );
 
   const flipCard = () => {
-    setIsFront((s) => !s);
+    dispatch(toggleCardDirection());
   };
   useEffect(() => {
-    window.addEventListener("resize", setHeightHandler);
     setImageWidth(businessCardFrontImageRef.current.offsetWidth);
-
     setHeightHandler();
-    return () => window.removeEventListener("resize", setHeightHandler);
-  }, [formState]);
+  }, [isMobile.clientWidth]);
   return (
     <>
       <div
-        style={{ height: cardHeight + 30 }}
+        style={{
+          height: cardHeight + 30,
+          marginTop: showForm ? "0" : "-100px",
+        }}
         className="business-card-container"
       >
         <div
@@ -193,20 +216,32 @@ const BusinessCard = (props) => {
             !isFront && "flipped"
           }`}
         >
-          <div className="glass-wrapper"></div>
-          <div style={formState.themeStyles} className="background-color"></div>
+          {/* <div className="glass-wrapper"></div> */}
+
+          {/* <div style={formState.themeStyles} className="background-color"></div> */}
           {cardFront}
           {cardBack}
         </div>
-        <div role={"button"} onClick={flipCard} className="card-flip">
-          <div className="icon-wrapper">{switchIcon}</div>
-          <span>FLIP CARD</span>
+        <div className="card-button-container">
+          <div role={"button"} onClick={flipCard} className="card-flip-button">
+            <div className="icon-wrapper">{switchIcon}</div>
+            <span>FLIP CARD</span>
+          </div>
+
+          {!showForm && <VCF />}
         </div>
       </div>
     </>
   );
 };
 export default BusinessCard;
+
+const launchIcon = (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="m13 3 3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z"></path>
+    <path d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z"></path>
+  </svg>
+);
 
 const phoneIcon = (
   <svg

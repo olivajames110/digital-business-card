@@ -4,38 +4,30 @@ import FormInputWrapper from "../shared/FormInputWrapper/FormInputWraper";
 import "./styles/Textbox.css";
 import { useDispatch, useSelector } from "react-redux";
 import { updateFormState } from "../../redux/actions/formStateActions";
+import {
+  setCardDirectionBackward,
+  setCardDirectionForward,
+} from "../../redux/actions/cardDirectionActions";
 const Textbox = (props) => {
-  const [value, setValue] = useState(null);
-  const [isValid, setIsValid] = useState(true);
-
+  const [value, setValue] = useState("");
+  const formState = useSelector((state) => state.formState);
+  const formStepIsValid = useSelector((state) => state.formStep.stepIsValid);
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
     let val = event.target.value;
-    if (val === "") {
-      console.log("Not Valid");
-      setIsValid(false);
+    setValue(val);
+    if (props.cardDirectionBack) {
+      dispatch(setCardDirectionBackward());
     } else {
-      console.log("Valid");
-      setIsValid(true);
-      setValue(val);
+      dispatch(setCardDirectionForward());
     }
-    if (props.nestedKey) {
-      dispatch(
-        updateFormState({
-          key: props.keyName,
-          nestedKey: props.nestedKey,
-          value: val,
-        })
-      );
-    } else {
-      dispatch(
-        updateFormState({
-          key: props.keyName,
-          value: val,
-        })
-      );
-    }
+    dispatch(
+      updateFormState({
+        key: props.keyName,
+        value: val,
+      })
+    );
   };
   const icon = <div className="icon-wrapper">{props.icon}</div>;
 
@@ -45,13 +37,13 @@ const Textbox = (props) => {
         {props.icon && icon}
         <TextField
           helperText={props.helperText}
-          // error={
-          //   !formStepIsValid &&
-          //   props.isRequired &&
-          //   formState[props.keyName] === ""
-          // }
+          error={
+            !formStepIsValid &&
+            props.isRequired &&
+            formState[props.keyName] === ""
+          }
           required={props.isRequired}
-          variant="outlined"
+          variant="standard"
           size="small"
           fullWidth
           datatype={props.keyName}
@@ -59,33 +51,13 @@ const Textbox = (props) => {
           id="outlined-basic"
           label={props.label}
           onChange={handleChange}
-          value={props.value}
+          value={formState[props.keyName]}
           style={props.style}
-          // InputLabelProps={{
-          //   shrink:
-          //     formState[props.keyName] === "" ||
-          //     formState[props.keyName] === undefined
-          //       ? false
-          //       : true,
-          // }}
-          InputLabelProps={{ shrink: props.value ? props.value : value }}
+          InputLabelProps={{
+            shrink: formState[props.keyName] ? formState[props.keyName] : value,
+          }}
           inputProps={props.inputProps}
         />
-        {/* <TextField
-          error={!isValid}
-          variant="outlined"
-          size="small"
-          fullWidth
-          // focused={props.value ? props.value : value}
-          // onBlur={checkIfValid}
-          id="outlined-basic"
-          label={props.label}
-          onChange={handleChange}
-          value={props.value}
-          required={props.required}
-          InputLabelProps={{ shrink: props.value ? props.value : value }}
-          InputProps={props.InputProps}
-        /> */}
       </div>
     </FormInputWrapper>
   );

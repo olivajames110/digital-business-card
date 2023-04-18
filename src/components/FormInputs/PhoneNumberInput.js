@@ -87,7 +87,7 @@ const PhoneNumberInput = (props) => {
       <FormInputWraper>
         <TextField
           error={!isValid}
-          variant="outlined"
+          variant="standard"
           size="small"
           fullWidth
           ref={phoneNumInputRef}

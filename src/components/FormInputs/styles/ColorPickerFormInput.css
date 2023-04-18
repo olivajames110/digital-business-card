@@ -23,7 +23,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding-top: 15px;
+  padding-top: 8px;
 }
 
 .color-picker-form-field .inputs-container .color-picker-input__dropdown {

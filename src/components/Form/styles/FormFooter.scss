@@ -21,6 +21,10 @@
     // font-size: 13px;
     align-items: center;
     overflow: hidden;
+    &:focus,
+    &:active {
+      outline: 2px solid var(--primary);
+    }
     .icon-wrapper {
       margin-left: 8px;
       svg {
@@ -75,7 +79,7 @@
     &.ghost {
       background: #fff !important;
       color: #a629f2;
-      padding: 6px 4px;
+      // padding: 6px 4px;
       &:hover {
         color: #6b0ea5;
       }

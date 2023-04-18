@@ -1,5 +1,9 @@
 import React, { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setCardDirectionBackward,
+  setCardDirectionForward,
+} from "../../../../redux/actions/cardDirectionActions";
 import { updateFormState } from "../../../../redux/actions/formStateActions";
 import FormInputWraper from "../../../shared/FormInputWrapper/FormInputWraper";
 import "./ImageUpload.css";
@@ -9,12 +13,23 @@ const ImageUpload = (props) => {
   const [previewUrl, setPreviewUrl] = useState("");
   const [isValid, setIsValid] = useState(false);
 
+  const formState = useSelector((state) => state.formState);
   const imageUploadRef = useRef(null);
 
   const dispatch = useDispatch();
   const imagePickerHandler = () => {
     imageUploadRef.current.click();
     setFile(true);
+  };
+
+  const resetHandler = () => {
+    setPreviewUrl("");
+    dispatch(
+      updateFormState({
+        key: props.keyName,
+        value: "",
+      })
+    );
   };
 
   const pickedHandler = (e) => {
@@ -27,6 +42,11 @@ const ImageUpload = (props) => {
       const fileReader = new FileReader();
       fileReader.onload = () => {
         console.log(props.keyName);
+        if (props.cardDirectionBack) {
+          dispatch(setCardDirectionBackward());
+        } else {
+          dispatch(setCardDirectionForward());
+        }
         setPreviewUrl(fileReader.result);
         dispatch(
           updateFormState({
@@ -51,14 +71,10 @@ const ImageUpload = (props) => {
 
   const imagePreview = (
     <div className="image-upload-preview">
-      <img
-        src={
-          previewUrl ||
-          "https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock-.jpg"
-        }
-        alt=""
-        srcset=""
-      />
+      <div role={"button"} onClick={resetHandler} className="reset-button">
+        {cross}
+      </div>
+      <img src={previewUrl || formState[props.keyName]} alt="" srcset="" />
     </div>
   );
   return (
@@ -66,7 +82,7 @@ const ImageUpload = (props) => {
       <div className="image-upload-inner-wrapper">
         <button onClick={imagePickerHandler} className="image-upload-box">
           {uploadIcon}
-          <div className="image-upload__title">Upload Image</div>
+          <div className="image-upload__title">{props.label}</div>
         </button>
         <input
           ref={imageUploadRef}
@@ -76,7 +92,7 @@ const ImageUpload = (props) => {
           accept=".jpg, .png, .jpeg"
           onChange={pickedHandler}
         />
-        {previewUrl && imagePreview}
+        {formState[props.keyName] && imagePreview}
       </div>
     </FormInputWraper>
   );
@@ -97,5 +113,10 @@ const uploadIcon = (
       strokeLinejoin="round"
       d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
     />
+  </svg>
+);
+const cross = (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path>
   </svg>
 );

@@ -36,6 +36,10 @@
   overflow: hidden;
 }
 
+.form__footer button:focus, .form__footer button:active {
+  outline: 2px solid var(--primary);
+}
+
 .form__footer button .icon-wrapper {
   margin-left: 8px;
 }
@@ -101,7 +105,6 @@
 .form__footer button.ghost {
   background: #fff !important;
   color: #a629f2;
-  padding: 6px 4px;
 }
 
 .form__footer button.ghost:hover {

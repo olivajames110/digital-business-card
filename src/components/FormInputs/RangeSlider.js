@@ -23,29 +23,6 @@ const RangeSlider = (props) => {
       props.onChange({ keyName: props.keyName, value: newVal });
     }
   };
-  const buttons = (
-    <div
-      style={{ opacity: isFocused ? "1" : "0" }}
-      className="slider__value_buttons"
-    >
-      <div className="button-container">
-        <button
-          onClick={handleIncrement}
-          type={"button"}
-          className="counter-button"
-        >
-          {upArrow}
-        </button>
-        <button
-          onClick={handleDecrement}
-          type={"button"}
-          className="counter-button"
-        >
-          {downArrow}
-        </button>
-      </div>
-    </div>
-  );
 
   return (
     <FormInputWrapper>
@@ -56,16 +33,6 @@ const RangeSlider = (props) => {
       >
         <div className="label">{props.label}</div>
         <div className="slider">
-          <div className="slider__value">
-            <div className="value">
-              <span>
-                {props.valueLabel ? props.valueLabel : props.value || 0}
-              </span>
-              <span>{!props.hideSuffix && "px"}</span>
-            </div>
-            {buttons}
-            {/* {isFocused && buttons} */}
-          </div>
           <div className="slider_range">
             <Slider
               aria-label="Volume"
@@ -79,6 +46,26 @@ const RangeSlider = (props) => {
               onChange={onChangeHandler}
               min={props.min}
               max={props.max}
+              // marks={
+              //   props.altMarks
+              //     ? props.altMarks
+              //     : [
+              //         {
+              //           value: props.min,
+              //           label: props.min,
+              //         },
+
+              //         {
+              //           value: (Math.abs(props.max) - Math.abs(props.min)) / 2,
+              //           label: (Math.abs(props.max) - Math.abs(props.min)) / 2,
+              //         },
+
+              //         {
+              //           value: props.max,
+              //           label: props.max,
+              //         },
+              //       ]
+              // }
             />
           </div>
         </div>

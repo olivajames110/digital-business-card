@@ -16,31 +16,31 @@ const SocialMediaSelector = (props) => {
     <>
       <SocialMediaSelectorRow
         icon={<Facebook style={{ color: "#1674ea" }} />}
-        keyName="socials"
+        keyName="facebook"
         label="Facebook Url"
         nestedKey={"facebook"}
       />
       <SocialMediaSelectorRow
         icon={<Twitter style={{ color: "#1c9cea" }} />}
-        keyName="socials"
+        keyName="twitter"
         label="Twitter URL"
         nestedKey={"twitter"}
       />
       <SocialMediaSelectorRow
         icon={<Instagram style={{ color: "#bd299e" }} />}
-        keyName="socials"
+        keyName="instagram"
         label="Instagram URL"
         nestedKey={"instagram"}
       />
       <SocialMediaSelectorRow
         icon={<LinkedIn style={{ color: "#0270ad" }} />}
-        keyName="socials"
+        keyName="linkedIn"
         label="LinkedIn URL"
         nestedKey={"linkedIn"}
       />
       <SocialMediaSelectorRow
         icon={<Monitor style={{ color: "#" }} />}
-        keyName="socials"
+        keyName="website"
         label="Personal Website URL"
         nestedKey={"website"}
       />
@@ -57,7 +57,7 @@ const SocialMediaSelectorRow = (props) => {
         icon={props.icon}
         label={props.label}
         iconColor={props.iconColor}
-        keyName="socials"
+        keyName={props.keyName}
         nestedKey={props.nestedKey}
       />
     </div>

@@ -11,8 +11,8 @@ const ColorPickerFormInput = (props) => {
   const [backgroundColorType, setBackgroundColorType] = React.useState("solid");
   const [backgroundColorDirection, setBackgroundColorDirection] =
     React.useState("to right");
-  const [toColor, setToColor] = useState("");
-  const [fromColor, setFromColor] = useState("");
+  const [toColor, setToColor] = useState("#ffffff");
+  const [fromColor, setFromColor] = useState("#ffffff");
 
   //Functions
   const onSolidChange = (color) => {

@@ -1,0 +1,37 @@
+.url-field {
+  position: relative;
+  .validation-icon {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    top: 54%;
+    transform: translateY(-50%);
+    border-radius: 50px;
+    // background-color: red;
+
+    svg {
+      display: block;
+      width: 16px;
+      height: 16px;
+      fill: #ffffff;
+    }
+    &.valid {
+      background-color: #54a36d;
+    }
+    &.invalid {
+      background-color: #d2524f;
+    }
+  }
+  .MuiFormHelperText-root {
+    position: absolute;
+    bottom: -24px;
+    left: 8px;
+    font-size: 0.7rem !important;
+    font-style: italic;
+    color: #d2524f !important;
+  }
+}

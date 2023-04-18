@@ -7,22 +7,12 @@ import { updateFormState } from "../../../../redux/actions/formStateActions";
 // import './ThemeSelectorItem.css'
 const ThemeSelectorItem = (props) => {
   const formState = useSelector((state) => state.formState);
-  const dispatch = useDispatch();
-  // const onChangeHandler = () => {
-  //   console.log("change");
-  //   dispatch(
-  //     updateFormState({
-  //       key: "theme",
-  //       nestedKey: "themeName",
-  //       value: props.themeName,
-  //     })
-  //   );
-  // };
+
   const onClickHandler = () => {
     console.log("change");
-    let oldState = { ...formState };
-    let updatedTheme = { themeName: props.themeName };
-    let newThemeState = { ...oldState, ...updatedTheme };
+    // let oldState = { ...formState };
+    // let updatedTheme = { themeName: props.themeName };
+    // let newThemeState = { ...oldState, ...updatedTheme };
     props.onClick();
   };
   return (

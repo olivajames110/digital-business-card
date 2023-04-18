@@ -9,18 +9,19 @@ const YourInfo = () => {
   return (
     <>
       <FormGroup
+        isRequired
         title="VBC Website Address"
         description="Tell us about yourself."
       >
         <UrlField label="URL Name" keyName="url" />
       </FormGroup>
       <FormGroup title="Your Information" description="Tell us about yourself.">
-        <Textbox label="Name" keyName="name" />
+        <Textbox isRequired label="Name" keyName="name" />
         <Textbox label="Job Role" keyName="job" />
         <PhoneNumberInput />
         {/* <Textbox label="Phone" keyName="phone" /> */}
         <Textbox label="Email" keyName="email" />
-        <ImageUpload keyName="imagePersonal" />
+        <ImageUpload keyName="imagePersonal" label="Upload Image of Yourself" />
       </FormGroup>
     </>
   );

@@ -1,5 +1,5 @@
-import { isMobile } from "react-device-detect";
 import { v4 as uuidv4 } from "uuid";
+import { brightStyles } from "../../components/Form/Components/ThemeSelector/themeStyles";
 
 const formInitStat = {
   id: uuidv4(),
@@ -11,7 +11,9 @@ const formInitStat = {
   email: "",
   imagePersonal: "",
   imageWork: "",
+  imageWorkColor: "",
   webAddressWork: "",
+  companyAddress: "",
   address: {
     street: "",
     city: "",
@@ -23,17 +25,14 @@ const formInitStat = {
     linkedIn: "",
     website: "",
   },
+  facebook: "",
+  instagram: "",
+  twitter: "",
+  linkedIn: "",
+  website: "",
   themeName: "bright",
   pageBackgroundColor: "",
-  themeStyles: {
-    background: "",
-    color: "",
-    borderRadius: "",
-    borderTopLeftRadius: "0",
-    borderTopRightRadius: "0",
-    borderBottomLeftRadius: "0",
-    borderBottomRightRadius: "0",
-  },
+  themeStyles: brightStyles,
 };
 
 const formStateReducer = (state = formInitStat, action) => {

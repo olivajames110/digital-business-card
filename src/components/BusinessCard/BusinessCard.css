@@ -5,7 +5,6 @@
   -webkit-perspective: 1000px;
           perspective: 1000px;
   height: 100%;
-  padding: 14px;
   text-align: left;
 }
 
@@ -41,11 +40,6 @@
   background-clip: padding-box;
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
-}
-
-.business-card-container .business-card-item .glass-wrapper::after,
-.business-card-container .business-card-item .background-color::after {
-  content: "";
 }
 
 .business-card-container .business-card-item .background-color {
@@ -145,6 +139,34 @@
       -ms-flex-align: center;
           align-items: center;
   z-index: 111111111111;
+  opacity: 1;
+}
+
+.business-card-container .business-card-item .card-item-face__back .work-web-address-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 111111111111111;
+  opacity: 1;
+}
+
+.business-card-container .business-card-item .card-item-face__back .work-web-address-container a {
+  opacity: 1;
+  font-size: 1.1rem;
+}
+
+.business-card-container .business-card-item .card-item-face__back .work-web-address-container .icon {
+  margin-left: 8px;
+}
+
+.business-card-container .business-card-item .card-item-face__back .work-web-address-container .icon svg {
+  display: block;
+  height: 14px;
+  width: 14px;
+  fill: inherit;
 }
 
 .business-card-container .business-card-item .detail-item {
@@ -161,16 +183,16 @@
 }
 
 .business-card-container .business-card-item .detail-item#name {
-  font-size: 1.8em;
-  margin: 20px 0;
+  font-size: 1.6rem;
+  margin: 20px 0 10px;
   font-weight: 700;
   line-height: 1.5em;
 }
 
 .business-card-container .business-card-item .detail-item#title {
-  font-size: 1.1em;
+  font-size: 1rem;
   font-weight: 300;
-  line-height: 1.4em;
+  line-height: 1.5rem;
   min-height: 25px;
 }
 
@@ -188,10 +210,19 @@
 }
 
 .business-card-container .business-card-item .detail-item .detail-item__detail {
-  font-size: 16px;
   font-weight: 300;
   line-height: 1.5em;
   min-height: 28px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.business-card-container .business-card-item .detail-item .detail-item__detail span {
+  font-size: 0.9rem;
 }
 
 .business-card-container .business-card-item .empty {
@@ -273,6 +304,21 @@
   height: auto;
 }
 
+.card-image#work img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.card-image#work.white {
+  -webkit-filter: brightness(0) invert(1);
+          filter: brightness(0) invert(1);
+}
+
+.card-image#work.black {
+  -webkit-filter: brightness(0) invert(0);
+          filter: brightness(0) invert(0);
+}
+
 .card-image img {
   width: 100%;
   -o-object-fit: cover;
@@ -306,11 +352,36 @@
   }
 }
 
-.card-flip {
+.card-button-container {
   position: absolute;
   bottom: -20px;
-  z-index: 1111111;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #fff;
+  fill: #fff;
+  font-family: var(--manrope);
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.159);
+  margin-top: -60px;
+}
+
+.card-button-container .card-flip-button,
+.card-button-container .download-contact-button {
+  z-index: 1111111;
   background-color: transparent;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -321,17 +392,19 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  color: #fff;
-  font-family: var(--manrope);
-  font-size: 18px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.159);
+  color: inherit;
   cursor: pointer;
 }
 
-.card-flip .icon-wrapper {
+.card-button-container .download-contact-button {
+  position: absolute;
+  top: 40px;
+}
+
+.card-button-container .icon-wrapper svg {
   margin-right: 10px;
+  display: block;
+  fill: inherit;
   height: 18px !important;
 }
 
@@ -361,6 +434,10 @@
   display: -ms-flexbox;
   display: flex;
   background-clip: padding-box;
+}
+
+.business-card-item.light .background-color.flipped .card-item-face__back a {
+  font-size: 2rem;
 }
 
 .business-card-item.dark {
@@ -474,11 +551,16 @@
   .business-card-container {
     min-width: 250px;
   }
-  .business-card-container div#title {
-    font-size: 24px !important;
+  .business-card-container div#name {
+    font-size: 1.2rem !important;
+    line-height: 1.2rem !important;
   }
   .business-card-container div#title {
-    font-size: 18px !important;
+    font-size: 0.8rem !important;
+    line-height: 1.2rem !important;
+  }
+  .business-card-container .detail-item__detail span {
+    font-size: 0.8rem !important;
   }
   .business-card-container .social-media-icons-container .icon-wrapper {
     padding: 0 8px !important;

@@ -14,12 +14,19 @@ import ThemeSelectorItem from "./ThemeSelectorItem";
 import Columns from "../../../shared/Columns/Columns";
 import ColorPickerFormInput from "../../../FormInputs/ColorPickerFormInput";
 import BoxShadow from "./Components/BoxShadow";
+import {
+  brightStyles,
+  cleanStyles,
+  darkStyles,
+  lightStyles,
+} from "./themeStyles";
 
 const ThemeSelector = (props) => {
   const [isCustom, setIsCustom] = useState(null);
 
   const formState = useSelector((state) => state.formState);
   const dispatch = useDispatch();
+
   const themeStyles = (data) => {
     let styles = {};
     let solidStyles = {
@@ -95,7 +102,12 @@ const ThemeSelector = (props) => {
         <div className="theme-selection-wrapper">
           <div className="theme-selector-items-container">
             <ThemeSelectorItem
-              onClick={() => updateThemePreset("light")}
+              onClick={() =>
+                updateRootFormState({
+                  keyName: "themeStyles",
+                  value: lightStyles,
+                })
+              }
               label={"Light"}
               keyName={formState.themeName}
               value="light"
@@ -105,7 +117,12 @@ const ThemeSelector = (props) => {
               labelPlacement="bottom"
             />
             <ThemeSelectorItem
-              onClick={() => updateThemePreset("dark")}
+              onClick={() =>
+                updateRootFormState({
+                  keyName: "themeStyles",
+                  value: darkStyles,
+                })
+              }
               label={"Dark"}
               keyName={formState.themeName}
               value="dark"
@@ -115,7 +132,12 @@ const ThemeSelector = (props) => {
               labelPlacement="bottom"
             />
             <ThemeSelectorItem
-              onClick={() => updateThemePreset("bright")}
+              onClick={() =>
+                updateRootFormState({
+                  keyName: "themeStyles",
+                  value: brightStyles,
+                })
+              }
               label={"Bright"}
               keyName={formState.themeName}
               value="bright"
@@ -125,7 +147,12 @@ const ThemeSelector = (props) => {
               labelPlacement="bottom"
             />
             <ThemeSelectorItem
-              onClick={() => updateThemePreset("clean")}
+              onClick={() =>
+                updateRootFormState({
+                  keyName: "themeStyles",
+                  value: cleanStyles,
+                })
+              }
               label={"Clean"}
               keyName={formState.themeName}
               value="clean"
@@ -207,6 +234,52 @@ const ThemeSelector = (props) => {
         </div>
       </FormGroup>
 
+      {/* ---SOCIAL MEDIA COLOR--- */}
+      {(formState.facebook ||
+        formState.instagram ||
+        formState.twitter ||
+        formState.linkedIn ||
+        formState.website) && (
+        <FormGroup title="Social Media Icon Color">
+          <div className="theme-selection-wrapper">
+            <div className="theme-selector-items-container">
+              <ThemeSelectorItem
+                keyName={formState.socialMediaIconColor}
+                label={"Light"}
+                value="#ffffff"
+                // themeName="light"
+                style={themeStyles({
+                  background: ["#ffffff"],
+                })}
+                labelPlacement="bottom"
+                onClick={() =>
+                  updateRootFormState({
+                    keyName: "socialMediaIconColor",
+                    value: "#ffffff",
+                  })
+                }
+              />
+              <ThemeSelectorItem
+                keyName={formState.socialMediaIconColor}
+                label={"Dark"}
+                value="#333333"
+                // themeName="dark"
+                style={themeStyles({
+                  background: ["#333333"],
+                })}
+                labelPlacement="bottom"
+                onClick={() =>
+                  updateRootFormState({
+                    keyName: "socialMediaIconColor",
+                    value: "#333333",
+                  })
+                }
+              />
+            </div>
+          </div>
+        </FormGroup>
+      )}
+
       {/* ---BORDER RADIUS--- */}
       <FormGroup
         title="Rounded Corners"
@@ -237,7 +310,7 @@ const ThemeSelector = (props) => {
             keyName={"borderBottomLeftRadius"}
             min={0}
             max={50}
-            label="Top Left"
+            label="Bottom Left"
           />
           <RangeSlider
             onChange={updateCustomThemeStyle}
@@ -245,7 +318,7 @@ const ThemeSelector = (props) => {
             keyName={"borderBottomRightRadius"}
             min={0}
             max={50}
-            label="Top Right"
+            label="Bottom Right"
           />
         </Columns>
       </FormGroup>

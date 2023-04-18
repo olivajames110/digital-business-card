@@ -1,5 +1,5 @@
 import React from "react";
-import { isMobile } from "react-device-detect";
+
 import { useSelector } from "react-redux";
 
 import "./Header.css";
@@ -15,7 +15,6 @@ const Header = (props) => {
   return (
     <header style={{ position: mobilePreviewActive ? "fixed" : "absolute" }}>
       <div className="logo-wrapper">{logo}</div>
-      {/* {isMobile && preview} */}
     </header>
   );
 };

@@ -45,8 +45,26 @@ export const useFirebase = (number) => {
     if (docSnap.exists()) {
       const docSnapData = docSnap.data();
       console.log("docSnapData", docSnapData);
-
       dispatch(setFormState({ ...docSnapData }));
+      setIsLoading(false);
+    }
+  };
+  // Check if user exists
+  const checkUser = async (user) => {
+    console.log("Getting user");
+    setIsLoading(true);
+
+    const docRef = doc(db, collectionName, user);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const docSnapData = docSnap.data();
+      console.log("user exists", docSnapData);
+      setData(docSnapData);
+      setIsLoading(false);
+    } else {
+      console.log("doesnt exist");
+      setData(null);
       setIsLoading(false);
     }
   };
@@ -68,5 +86,6 @@ export const useFirebase = (number) => {
     data,
     createNewUser,
     getUser,
+    checkUser,
   };
 };

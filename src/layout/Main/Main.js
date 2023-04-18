@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { isMobile } from "react-device-detect";
+
 import { useDispatch, useSelector } from "react-redux";
 import { SpinnerDotted } from "spinners-react";
 
@@ -7,21 +7,26 @@ import BusinessCard from "../../components/BusinessCard/BusinessCard";
 import Form from "../../components/Form/Form";
 import Modal from "../../components/shared/Modal/Modal";
 import { useFirebase } from "../../firebase";
+import { getLastLetter } from "../../helpers/getLastLetter";
+import { setIsMobile } from "../../redux/actions/isMobileActions";
 import { setMobilePreview } from "../../redux/actions/mobilePreviewActions";
+import { setHideForm, setShowForm } from "../../redux/actions/showFormActions";
 
 import "./Main.css";
 const Main = (props) => {
   const [showCard, setShowCard] = useState(false);
-  const [showForm, setShowForm] = useState(false);
+  // const [showForm, setShowForm] = useState(false);
 
   const dispatch = useDispatch();
   const formState = useSelector((state) => state.formState);
+  const isMobile = useSelector((state) => state.isMobile);
+  const showForm = useSelector((state) => state.showForm);
   const { isLoading, createNewUser, getUser } = useFirebase();
   const mobilePreviewActive = useSelector((state) => state.mobilePreviewActive);
   const cardPreviewSection = (
     <section
-      className={`${isMobile && showCard && "preview-active"} ${
-        !isMobile && "desktop"
+      className={`${isMobile.bool && showCard && "preview-active"} ${
+        !isMobile.bool && "desktop"
       }`}
       style={{ width: showForm ? "50%" : "100%" }}
       id="card-preview-section"
@@ -39,20 +44,22 @@ const Main = (props) => {
     </section>
   );
 
-  const getLastLetter = (url) => {
-    let lastLetter = url.charAt(url.length - 1);
-    let lastWord = url.split("/");
-    if (lastLetter === "/") {
-      return lastWord[lastWord.length - 2];
-    } else {
-      return lastWord[lastWord.length - 1];
-    }
-  };
-
   useEffect(() => {
-    if (isMobile) {
+    if (isMobile.bool) {
       setShowCard(false);
     }
+
+    let checkMobileHandler = () => {
+      let clientWidth = document.body.clientWidth;
+      console.log("clientWidth: ", clientWidth);
+      if (clientWidth <= 768) {
+        console.log("Make Mobile: ", clientWidth);
+        dispatch(setIsMobile({ bool: true, clientWidth }));
+      } else {
+        console.log("Make Desktop: ", clientWidth);
+        dispatch(setIsMobile({ bool: false, clientWidth }));
+      }
+    };
 
     let slug =
       window.location.host === "oakcreatives.com"
@@ -60,9 +67,12 @@ const Main = (props) => {
         : "/";
     if (window.location.pathname === slug) {
       console.log("Show Form", window.location.pathname, slug);
-      setShowForm(true);
+      checkMobileHandler();
+      dispatch(setShowForm());
     } else {
-      setShowForm(false);
+      checkMobileHandler();
+      dispatch(setHideForm());
+
       setMobilePreview(true);
       let user = getLastLetter(window.location.href);
       console.log("Find if exists", window.location.pathname, user);
@@ -76,14 +86,14 @@ const Main = (props) => {
     >
       <Modal
         className={"card-preview-modal"}
-        show={mobilePreviewActive}
+        show={mobilePreviewActive && isMobile.bool === true}
         onCancel={() => dispatch(setMobilePreview(false))}
       >
         <BusinessCard />
       </Modal>
       <div className="main-inner-wrapper">
         {/* {!showForm && cardPreviewSection} */}
-        {((showForm && !isMobile) || !showForm) && cardPreviewSection}
+        {((showForm && !isMobile.bool) || !showForm) && cardPreviewSection}
         {showForm && <Form />}
       </div>
       {/* {!isMobile && <div className="main-logo-wrapper">{logo}</div>} */}

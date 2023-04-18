@@ -1,11 +1,14 @@
-import React from "react";
-import { isMobile } from "react-device-detect";
+import React, { useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useFirebase } from "../../firebase";
+import { checkInvalidInputs } from "../../helpers/checkInvalidInputs";
 import { setFormState } from "../../redux/actions/formStateActions";
 import {
   decreaseFormStep,
   increaseFormStep,
+  setFormStepInvalid,
+  setFormStepValid,
 } from "../../redux/actions/formStepActions";
 import { setMobilePreview } from "../../redux/actions/mobilePreviewActions";
 
@@ -13,28 +16,49 @@ import "./styles/FormFooter.css";
 
 const FormFooter = (props) => {
   //Database
+
+  const [invalidQuestions, setInvalidQuestions] = useState([]);
   const { isLoading, createNewUser, getUser } = useFirebase();
 
   //Steps
   const formState = useSelector((state) => state.formState);
+  const isMobile = useSelector((state) => state.isMobile);
   const currentFormStepNumber = useSelector((state) => state.formStep.step);
   const formStep = useSelector((state) => state.formStep);
   const dispatch = useDispatch();
 
   const handleNextStep = (e) => {
-    console.log("Next");
-    if (formStep.step === formStep.stepTitles.length) {
-      console.log("-------------------Submit-------------------");
+    e.currentTarget.blur();
+    let invalidQs = [];
+    const requiredInputs = document.querySelectorAll("input[required]");
+    requiredInputs.forEach((i) => {
+      if (i.value === "") {
+        console.log("EMPTY", i);
+        invalidQs.push(i);
+      }
+    });
 
-      // getUser();
-      createNewUser();
-      // sendEmail();
+    let iv = checkInvalidInputs();
+    ////
+    console.log("invalidQuestions", iv);
+    if (iv.length === 0) {
+      document.querySelector("#root").scrollTo(0, 0);
+      setInvalidQuestions([]);
+      setTimeout(() => {
+        if (formStep.step === formStep.stepTitles.length) {
+          console.log("Submit");
+
+          createNewUser();
+        }
+        dispatch(increaseFormStep());
+      }, 200);
+    } else {
+      dispatch(setFormStepInvalid());
     }
-
-    dispatch(increaseFormStep());
   };
 
   const handlePreviousStep = (e) => {
+    e.currentTarget.blur();
     document.querySelector("#root").scrollTo(0, 0);
     // dispatch(setFormStepValid());
 
@@ -50,14 +74,20 @@ const FormFooter = (props) => {
       onClick={handlePreviousStep}
       className="ghost"
     >
-      Back
+      <span>Back</span>
     </button>
   );
 
   const nextButton = (
     <button onClick={handleNextStep} className="gradient">
-      <span>Next</span>
-      <div className="icon-wrapper">{rightArrow}</div>{" "}
+      <span>
+        {formStep.step === formStep.stepTitles.length
+          ? "Generate Card"
+          : "Next"}
+      </span>
+      {formStep.step !== formStep.stepTitles.length && (
+        <div className="icon-wrapper">{rightArrow}</div>
+      )}
     </button>
   );
 
@@ -65,7 +95,7 @@ const FormFooter = (props) => {
     <div className="form__footer">
       {backButton}
       <div className="next-button-wrapper">
-        {isMobile && (
+        {isMobile.bool && (
           <button
             onClick={() => dispatch(setMobilePreview(true))}
             className="preview-button-container"

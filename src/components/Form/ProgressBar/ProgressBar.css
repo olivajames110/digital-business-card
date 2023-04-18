@@ -82,6 +82,7 @@
   left: 50%;
   line-height: 1rem;
   font-weight: 600;
+  font-size: 12px;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   margin-top: 5px;
@@ -165,8 +166,10 @@
     height: 16px;
   }
   .progress-bar-container .progress-bar__steps .progress-bar-item .progress-bar-item__step .progress-bar-step__label {
-    font-size: 12px;
     width: 77px;
+  }
+  .progress-bar-container .progress-bar__steps .progress-bar-item .progress-bar-item__step .progress-bar-step__label span {
+    font-size: 12px;
   }
 }
 

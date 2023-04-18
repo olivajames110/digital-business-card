@@ -31,11 +31,30 @@ $boxHeight: 100px;
   }
 
   .image-upload-preview {
+    position: relative;
     border: 1px solid #d6d6d6;
     width: $boxHeight;
     height: $boxHeight;
     border-radius: 5px;
+    overflow: hidden;
     margin-left: 10px;
+    display: flex;
+    align-items: center;
+    .reset-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.642);
+      backdrop-filter: blur(4px);
+      border-bottom-left-radius: 5px;
+      svg {
+        display: block;
+        fill: #333;
+      }
+    }
     img {
       object-fit: cover;
       width: 100%;

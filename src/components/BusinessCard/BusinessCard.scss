@@ -8,7 +8,7 @@ $darkCardShadow: -4px 5px 7px 3px #0000004d;
   // min-width: 400px;
   perspective: 1000px;
   height: 100%;
-
+  // margin-top: -100px;
   text-align: left;
   .business-card-item {
     position: absolute;
@@ -38,10 +38,6 @@ $darkCardShadow: -4px 5px 7px 3px #0000004d;
       opacity: 0.7;
       background-clip: padding-box;
       backdrop-filter: blur(10px);
-      &::after {
-        content: "";
-        // background-color: red;
-      }
     }
     .background-color {
       box-shadow: $darkCardShadow;
@@ -116,6 +112,26 @@ $darkCardShadow: -4px 5px 7px 3px #0000004d;
       justify-content: center;
       align-items: center;
       z-index: 111111111111;
+      opacity: 1;
+      .work-web-address-container {
+        display: flex;
+        align-items: center;
+        z-index: 111111111111111;
+        opacity: 1;
+        a {
+          opacity: 1;
+          font-size: 1.1rem;
+        }
+        .icon {
+          margin-left: 8px;
+          svg {
+            display: block;
+            height: 14px;
+            width: 14px;
+            fill: inherit;
+          }
+        }
+      }
     }
 
     .detail-item {
@@ -126,15 +142,15 @@ $darkCardShadow: -4px 5px 7px 3px #0000004d;
       animation: enterEase 200ms;
 
       &#name {
-        font-size: 1.8em;
-        margin: 20px 0;
+        font-size: 1.6rem;
+        margin: 20px 0 10px;
         font-weight: 700;
         line-height: 1.5em;
       }
       &#title {
-        font-size: 1.1em;
+        font-size: 1rem;
         font-weight: 300;
-        line-height: 1.4em;
+        line-height: 1.5rem;
         min-height: 25px;
       }
 
@@ -150,10 +166,14 @@ $darkCardShadow: -4px 5px 7px 3px #0000004d;
         }
       }
       .detail-item__detail {
-        font-size: 16px;
         font-weight: 300;
         line-height: 1.5em;
         min-height: 28px;
+        display: flex;
+        align-items: center;
+        span {
+          font-size: 0.9rem;
+        }
       }
     }
     .empty {
@@ -225,6 +245,15 @@ $darkCardShadow: -4px 5px 7px 3px #0000004d;
     width: 90%;
     margin: 0 auto;
     height: auto;
+    img {
+      object-fit: contain;
+    }
+    &.white {
+      filter: brightness(0) invert(1);
+    }
+    &.black {
+      filter: brightness(0) invert(0);
+    }
   }
   img {
     width: 100%;
@@ -244,24 +273,42 @@ $darkCardShadow: -4px 5px 7px 3px #0000004d;
 }
 
 //Flip Card Button
-.card-flip {
+.card-button-container {
   position: absolute;
   bottom: -20px;
-  z-index: 1111111;
   width: 100%;
-  background-color: transparent;
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   color: #fff;
+  fill: #fff;
   font-family: var(--manrope);
   font-size: 18px;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.159);
-  cursor: pointer;
-  .icon-wrapper {
+  margin-top: -60px;
+  .card-flip-button,
+  .download-contact-button {
+    z-index: 1111111;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .download-contact-button {
+    position: absolute;
+    top: 40px;
+  }
+
+  .icon-wrapper svg {
     margin-right: 10px;
+    display: block;
+    fill: inherit;
     height: 18px !important;
   }
 }
@@ -297,6 +344,9 @@ $darkCardShadow: -4px 5px 7px 3px #0000004d;
           background-clip: padding-box;
           // backdrop-filter: blur(20px);
           // backdrop-filter: blur(20px);
+          a {
+            font-size: 2rem;
+          }
         }
       }
     }
@@ -407,11 +457,18 @@ $darkCardShadow: -4px 5px 7px 3px #0000004d;
   .business-card-container {
     min-width: 250px;
     // transform: scale(0.8);
-    div#title {
-      font-size: 24px !important;
+    div#name {
+      font-size: 1.2rem !important;
+      line-height: 1.2rem !important;
     }
     div#title {
-      font-size: 18px !important;
+      font-size: 0.8rem !important;
+      line-height: 1.2rem !important;
+    }
+    .detail-item__detail {
+      span {
+        font-size: 0.8rem !important;
+      }
     }
     .social-media-icons-container .icon-wrapper {
       padding: 0 8px !important;
